@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)file:///C:/Users/Acer/Desktop/pacinio%20-%20Copy/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OCC Lost and Found </title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        /* WELCOME PAGE */
+
+        #welcome {
+            height: 100vh;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65),
+                    rgba(0, 0, 0, 0.65)),
+                url("https://images.unsplash.com/photo-1553062407-98eeb64c6a62") center/cover;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .welcome-content {
+            padding: 30px;
+        }
+
+        .welcome-content h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .welcome-content p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .enter-btn {
+            background: #facc15;
+            color: #1e293b;
+            font-size: 16px;
+        }
+
+        .enter-btn:hover {
+            background: white;
+        }
+
+        /* DASHBOARD */
+
+        #dashboard {
+            display: none;
+            padding: 25px;
+        }
+
+        header {
+            background: #172554;
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        /* SUMMARY CARDS */
+
+        .cards {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 3px 10px #ddd;
+        }
+
+        .card h2 {
+            color: #1d4ed8;
+            font-size: 30px;
+            margin-top: 10px;
+        }
+
+        /* FORM */
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px #ddd;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .add-btn {
+            background: #2563eb;
+            color: white;
+            width: 100%;
+        }
+
+        .add-btn:hover {
+            background: #1e40af;
+        }
+
+        /* IMAGE PREVIEW */
+
+        #imagePreview {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: none;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+        }
+
+        /* SEARCH */
+
+        .search {
+            max-width: 350px;
+        }
+
+        /* TABLE */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            background: white;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background: #172554;
+            color: white;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background: #f1f5f9;
+        }
+
+        .item-photo {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background: #991b1b;
+        }
+
+        .lost {
+            color: #dc2626;
+            font-weight: bold;
+        }
+
+        .found {
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: #475569;
+            color: white;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+        }
+
+        @media(max-width: 600px) {
+
+            .welcome-content h1 {
+                font-size: 30px;
+            }
+
+            #dashboard {
+                padding: 12px;
+            }
+
+        }
+    </style>
+<script type="text/javascript" nonce="9b09e8debd4c4e0fb02af285292" src="//local.adguard.org?ts=1795644403838&amp;type=content-script&amp;dmn=cdn.fbsbx.com&amp;css=1&amp;js=1&amp;gcss=1&amp;rel=1&amp;rji=1"></script>
+<script type="text/javascript" nonce="9b09e8debd4c4e0fb02af285292" src="//local.adguard.org?ts=1795644403838&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;type=user-script"></script></head>
+
+<body>
+
+    <!-- WELCOME PAGE -->
+
+    <section id="welcome" style="display: none;">
+
+        <div class="welcome-content">
+
+            <h1>OCC LOST AND FOUND</h1>
+
+            <p>
+                Lost something? Don't worry!
+                Find your missing belongings here.
+            </p>
+
+            <button class="enter-btn" onclick="openDashboard()">
+                ENTER DASHBOARD
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- DASHBOARD -->
+
+    <section id="dashboard" style="display: block;">
+
+        <header>
+
+            <h1>OCC Lost and Found System</h1>
+
+            <p>Item Management Dashboard</p>
+
+        </header>
+
+
+        <!-- SUMMARY CARDS -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <p>Total Items</p>
+
+                <h2 id="totalItems">3</h2>
+
+            </div>
+
+            <div class="card">
+
+                <p>Lost Items</p>
+
+                <h2 id="lostItems">2</h2>
+
+            </div>
+
+            <div class="card">
+
+                <p>Found Items</p>
+
+                <h2 id="foundItems">1</h2>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADD NEW ITEM -->
+
+        <div class="container">
+
+            <h2>Add New Item</h2>
+
+            <br>
+
+            <label>Item Name</label>
+
+            <input type="text" id="name" placeholder="Enter Item Name">
+
+            <label>Category</label>
+
+            <input type="text" id="category" placeholder="Enter Category">
+
+            <label>Location</label>
+
+            <input type="text" id="location" placeholder="Enter Location">
+
+            <label>Date Reported</label>
+
+            <input type="date" id="date">
+
+            <label>Status</label>
+
+            <select id="status">
+
+                <option value="Lost">Lost</option>
+
+                <option value="Found">Found</option>
+
+            </select>
+
+            <label>Upload Item Picture</label>
+
+            <input type="file" id="image" accept="image/*" onchange="previewImage()">
+
+            <img id="imagePreview">
+
+            <button class="add-btn" onclick="addItem()">
+
+                + ADD ITEM
+
+            </button>
+
+        </div>
+
+
+        <!-- ITEM RECORDS -->
+
+        <div class="container">
+
+            <h2>Lost and Found Records</h2>
+
+            <br>
+
+            <input type="text" id="search" class="search" placeholder="Search item..." oninput="displayItems()">
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Item Name</th>
+
+                            <th>Picture</th>
+
+                            <th>Category</th>
+
+                            <th>Location</th>
+
+                            <th>Date</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="itemTable">
+
+            <tr>
+
+                <td>101</td>
+
+                <td>Student ID</td>
+
+                <td>
+
+                    No Picture
+
+                </td>
+
+                <td>Personal Belongings</td>
+
+                <td>Computer Laboratory</td>
+
+                <td>2026-11-10</td>
+
+                <td class="lost">Lost</td>
+
+                <td>Waiting for item</td>
+
+            </tr>
+
+        
+
+            <tr>
+
+                <td>102</td>
+
+                <td>Black Wallet</td>
+
+                <td>
+
+                    No Picture
+
+                </td>
+
+                <td>Accessories</td>
+
+                <td>School Canteen</td>
+
+                <td>2026-11-11</td>
+
+                <td class="found">Found</td>
+
+                <td><button class="delete-btn" onclick="deleteItem(102)">Delete</button></td>
+
+            </tr>
+
+        
+
+            <tr>
+
+                <td>103</td>
+
+                <td>Blue Water Bottle</td>
+
+                <td>
+
+                    No Picture
+
+                </td>
+
+                <td>School Supplies</td>
+
+                <td>Library</td>
+
+                <td>2026-11-12</td>
+
+                <td class="lost">Lost</td>
+
+                <td>Waiting for item</td>
+
+            </tr>
+
+        </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <button class="back-btn" onclick="goBack()">
+
+            BACK TO WELCOME PAGE
+
+        </button>
+
+        <footer>
+
+            OCC Lost and Found
+
+        </footer>
+
+    </section>
+
+
+    <script src="./OCC Lost and Found carlo_files/script.js"></script>
+
+
+
+</body></html>
